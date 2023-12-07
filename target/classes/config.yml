@@ -1,0 +1,91 @@
+General Settings:
+  staff_chat_prefix: "&c[&fSC&c]&f"
+  staff_chat_end: " ▶"
+  staff_chat_color: "&6"
+
+  clear_chat_message: "&c[&f&l GLOBAL CHAT HAS BEEN CLEARED &c]"
+  player_list_heads:
+    name: "&c[&f%player_name%&c] &fHead"
+
+
+Inventory:
+  fill_material: "GRAY_STAINED_GLASS_PANE"
+  title: "&6Staff Modes"
+  size: 27
+  items:
+    item1:
+      slot: 3
+      display_name: "&aVanish Mode"
+      lore:
+        - "  "
+        - "&7Click to vanish"
+        - " "
+      material: ENDER_PEARL
+      command_on_click: "vanish"
+    item2:
+      slot: 4
+      display_name: "&bGod Mode"
+      lore:
+        - " "
+        - "&7Click to enable God Mode"
+        - ""
+      material: GOLDEN_APPLE
+      command_on_click: "godmode"
+    item3:
+      slot: 5
+      display_name: "&bClear Chat"
+      lore:
+        - " "
+        - "&7Click to clear the global chat"
+        - ""
+      material: FEATHER
+      command_on_click: "sm clearchat"
+    item4:
+      slot: 13
+      display_name: "&ePlayer Head List"
+      lore:
+        - " "
+        - "&7Click to open the online player's list"
+        - ""
+      material: DIAMOND_HELMET
+      command_on_click: "sm playerlist"
+    item5:
+      slot: 14
+      display_name: "&eToggle Staff Chat"
+      lore:
+        - " "
+        - "&7Click to toggle staff chat"
+        - ""
+      material: PAPER
+      command_on_click: "staffchat"
+    helpItem:
+      slot: 12
+      display_name: "&cHELP"
+      lore:
+        - " "
+        - "&7Click to see all commands"
+        - ""
+      material: ENCHANTED_BOOK
+      command_on_click: "sm help"
+    item6:
+      slot: 18
+      display_name: "&aYou can add your own items"
+      lore:
+        - " "
+        - "&7Edit this item in the config, "
+        - "&7You can make it execute any commnad on your server!"
+        - "&7Just add more items for more commands!"
+        - ""
+      material: BOOK
+      command_on_click: "staffchat"
+    item8:
+      slot: 19
+      display_name: "&aSettings "
+      lore:
+        - " "
+        - "&7Edit this item in the config, "
+        - "&7You can make it execute any commnad on your server!"
+        - "&7Just add more items for more commands!"
+        - ""
+      material: BOOK
+      command_on_click: "sm clsoeinv"

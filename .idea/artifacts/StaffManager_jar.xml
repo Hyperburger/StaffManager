@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StaffManager:jar">
+    <output-path>$USER_HOME$/Desktop/Minecraft Server/plugins</output-path>
+    <root id="archive" name="StaffManager.jar">
+      <element id="module-output" name="StaffManager" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.28/lombok-1.18.28.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
