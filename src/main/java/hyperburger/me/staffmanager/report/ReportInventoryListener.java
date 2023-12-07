@@ -1,7 +1,5 @@
 package hyperburger.me.staffmanager.report;
 
-import hyperburger.me.staffmanager.report.Report;
-import hyperburger.me.staffmanager.report.ReportManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -22,8 +20,8 @@ public class ReportInventoryListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event){
         if (!(event.getWhoClicked() instanceof Player)) return;
-        Player player = (Player) event.getWhoClicked();
-        Inventory inventory = event.getClickedInventory();
+        final Player player = (Player) event.getWhoClicked();
+        final Inventory inventory = event.getClickedInventory();
 
         // Check if the inventory is the report GUI
         if (inventory == null) {
@@ -48,12 +46,10 @@ public class ReportInventoryListener implements Listener {
         String reportedName = event.getView().getTitle().substring(8);
 
         // Create a new report
-        Report report = new Report(player, Bukkit.getPlayer(reportedName), reportReason, 100);
-        reportManager.addReport(player, Bukkit.getPlayer(reportedName), reportReason, 100);
+        Report report = new Report(player, Bukkit.getPlayer(reportedName), reportReason);
+        reportManager.addReport(player, Bukkit.getPlayer(reportedName), reportReason);
         reportManager.getReports().put(report.getId(), report);
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aYour report has been submitted for &f" + reportedName + " &awith reason: " + reportReason));
         player.closeInventory();
-
-
     }
 }
