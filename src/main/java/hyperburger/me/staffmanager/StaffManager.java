@@ -1,7 +1,10 @@
 package hyperburger.me.staffmanager;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mongodb.*;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.ServerApi;
+import com.mongodb.ServerApiVersion;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
@@ -17,13 +20,18 @@ import hyperburger.me.staffmanager.report.*;
 import hyperburger.me.staffmanager.report.api.ReportController;
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.UuidRepresentation;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import spark.Filter;
+import spark.Spark;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static spark.Spark.after;
 
 public class StaffManager extends JavaPlugin {
 
@@ -60,8 +68,10 @@ public class StaffManager extends JavaPlugin {
         ServerApi serverApi = ServerApi.builder()
                 .version(ServerApiVersion.V1)
                 .build();
+
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(new ConnectionString(uri))
+                .uuidRepresentation(UuidRepresentation.STANDARD)
                 .serverApi(serverApi)
                 .build();
 
@@ -81,6 +91,15 @@ public class StaffManager extends JavaPlugin {
         // Let's make sure everything's in order!
         init();
         startMessages();
+
+        after((request, response) -> {
+
+            response.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+            response.header("Access-Control-Allow-Origin", "*");
+
+            response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
+            response.header("Access-Control-Allow-Credentials", "true");
+        });
 
         ReportController.init();
     }
