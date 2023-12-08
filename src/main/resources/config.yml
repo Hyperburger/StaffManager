@@ -7,6 +7,9 @@ General Settings:
   player_list_heads:
     name: "&c[&f%player_name%&c] &fHead"
 
+api_settings:
+  key: ""
+
 
 Inventory:
   fill_material: "GRAY_STAINED_GLASS_PANE"
