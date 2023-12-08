@@ -8,7 +8,8 @@ import hyperburger.me.staffmanager.report.api.request.AddReportRequest;
 import hyperburger.me.staffmanager.report.api.request.DeleteReportRequest;
 import hyperburger.me.staffmanager.report.api.request.SelectReportsRequest;
 import org.bukkit.Bukkit;
-import spark.Spark;
+
+import static spark.Spark.post;
 
 public class ReportController {
 
@@ -19,7 +20,7 @@ public class ReportController {
 		// an example for the json needed to add reports
 		// { "key": "configuration", "reporter": "Test", "reported": "Tested", "reason": "No Reason" }
 
-		Spark.post("/api/add_report", (request, response) -> {
+		post("/api/add_report/", (request, response) -> {
 			try {
 				var body = request.body();
 				var report = objectMapper.readValue(body, AddReportRequest.class);
@@ -51,7 +52,7 @@ public class ReportController {
 		// an example for the json needed to delete reports
 		// { "key": "configuration", "id": "Report Id" }
 
-		Spark.post("/api/delete_report", (request, response) -> {
+		post("/api/delete_report/", (request, response) -> {
 			try {
 				var body = request.body();
 				var report = objectMapper.readValue(body, DeleteReportRequest.class);
@@ -74,7 +75,7 @@ public class ReportController {
 		// an example for the json needed to select reports with a limit
 		// { "key": "configuration", "limit": "number" }
 
-		Spark.post("/api/all_reports", (request, response) -> {
+		post("/api/all_reports/", (request, response) -> {
 			try {
 				var body = request.body();
 				var report = objectMapper.readValue(body, SelectReportsRequest.class);
